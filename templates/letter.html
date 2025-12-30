@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #FFC1CC;
+            background-image: radial-gradient(#FFD1DC 12%, transparent 12%);
+            background-size: 30px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        body {
+    font-size: clamp(14px, 4vw, 18px);
+}
+
+.text-box {
+    width: 85vw;
+    max-width: 360px;
+}
+button, a {
+    min-height: 44px;
+}
+.options {
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 480px) {
+    .options {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+body {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .letter {
+            font-size: 80px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .letter:hover {
+            transform: scale(1.1);
+        }
+
+        .instruction-box {
+            background: white;
+            border: 2px solid hotpink;
+            border-radius: 15px;
+            padding: 12px 20px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .message-box {
+            display: none;
+            background: white;
+            border: 2px solid hotpink;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 20px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+
+        .next-button {
+            display: none;
+            margin-top: 25px;
+            padding: 10px 30px;
+            background: white;
+            border: 2px solid hotpink;
+            border-radius: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+
+        .next-button:hover {
+            background: #FFD1DC;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -40px;
+            font-size: 22px;
+            animation: fall 2.5s ease-out forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="letter" class="letter">💌</div>
+
+        <div id="instruction" class="instruction-box">
+            Click the letter
+        </div>
+
+        <div id="message" class="message-box">
+            The past year with you felt amazinggg. I'm so thankful to have you T-T.
+            I know I may not have been the perfect girlfriend, but I do wish to be better.
+            Whenever you feel alone, remember I'm always beside you, even if we're not texting as much.
+            You're capable of many more things than you think you can do.
+            Just keep believing in yourself, I know you can make it.
+            I love you sooo soooo much MWAH MWAAHHHH &lt;3
+            AND DON'T YOU DARE LEAVE ME
+        </div>
+
+        <a href="/final" id="nextButton" class="next-button">
+            NEXT
+        </a>
+    </div>
+
+    <script>
+        const letter = document.getElementById("letter");
+        const message = document.getElementById("message");
+        const instruction = document.getElementById("instruction");
+        const nextButton = document.getElementById("nextButton");
+
+        let opened = false;
+
+        letter.addEventListener("click", () => {
+            if (opened) return;
+            opened = true;
+
+            letter.style.display = "none";
+            instruction.style.display = "none";
+            message.style.display = "block";
+            nextButton.style.display = "inline-block";
+
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.textContent = "❤️";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDelay = Math.random() * 0.5 + "s";
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        });
+    </script>
+</body>
+</html>

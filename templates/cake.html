@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cut the Cake</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #FFC1CC;
+            background-image: radial-gradient(#FFD1DC 10%, transparent 10%);
+            background-size: 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+body {
+    font-size: clamp(14px, 4vw, 18px);
+}
+
+        .container {
+            text-align: center;
+        }
+
+        /* Cake */
+        .cake {
+            position: relative;
+            width: 260px;
+            height: 160px;
+            margin: 40px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cake-half {
+            width: 130px;
+            height: 120px;
+            background: #C62828;
+            position: relative;
+            transition: transform 0.6s ease;
+        }
+
+        .cake-half::before {
+            content: "";
+            position: absolute;
+            top: -25px;
+            left: 0;
+            width: 100%;
+            height: 25px;
+            background: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .left {
+            border-radius: 0 0 0 20px;
+        }
+
+        .right {
+            border-radius: 0 0 20px 0;
+        }
+
+        .split .left {
+            transform: translateX(-40px);
+        }
+
+        .split .right {
+            transform: translateX(40px);
+        }
+
+        /* Candle */
+        .candle {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 45px;
+            background: orange;
+            border-radius: 5px;
+            z-index: 5;
+        }
+
+        .flame {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 20px;
+            background: yellow;
+            border-radius: 50%;
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            from { transform: translateX(-50%) scale(1); opacity: 0.9; }
+            to { transform: translateX(-50%) scale(1.1); opacity: 1; }
+        }
+.text-box {
+    width: 85vw;
+    max-width: 360px;
+}
+button, a {
+    min-height: 44px;
+}
+.options {
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 480px) {
+    .options {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+body {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+        /* Knife */
+        .knife-box {
+            background: white;
+            border-radius: 15px;
+            padding: 12px 20px;
+            display: inline-block;
+            cursor: grab;
+            user-select: none;
+        }
+.draggable {
+    touch-action: none;
+}
+
+        .knife {
+            font-size: 30px;
+        }
+
+        .instruction {
+            margin-top: 10px;
+            font-weight: bold;
+            color: black;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            animation: fall 2.5s ease-out forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div id="cake" class="cake">
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="cake-half left"></div>
+            <div class="cake-half right"></div>
+        </div>
+
+        <div class="knife-box" draggable="true" id="knife">
+            <span class="knife">🔪</span>
+        </div>
+
+        <div class="instruction">
+            Drag the knife onto the cake!
+        </div>
+    </div>
+
+    <script>
+        /* Confetti once */
+        for (let i = 0; i < 30; i++) {
+            const confetti = document.createElement("div");
+            confetti.className = "confetti";
+            confetti.textContent = "❤️";
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.animationDelay = Math.random() * 0.5 + "s";
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 3000);
+        }
+
+        /* Drag & redirect logic */
+        const knife = document.getElementById("knife");
+        const cake = document.getElementById("cake");
+        let cut = false;
+
+        knife.addEventListener("dragstart", e => {
+            e.dataTransfer.setData("text/plain", "knife");
+        });
+
+        cake.addEventListener("dragover", e => {
+            e.preventDefault();
+        });
+
+        cake.addEventListener("drop", () => {
+            if (cut) return;
+            cut = true;
+
+            cake.classList.add("split");
+
+            setTimeout(() => {
+                window.location.href = "/letter";
+            }, 2500);
+        });
+    </script>
+</body>
+</html>

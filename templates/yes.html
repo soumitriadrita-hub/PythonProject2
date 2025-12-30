@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>One Year Anniversary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #FFC1CC;
+            background-image: radial-gradient(#FFD1DC 10%, transparent 10%);
+            background-size: 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+body {
+    font-size: clamp(14px, 4vw, 18px);
+}
+
+        .container {
+            text-align: center;
+        }
+
+        .image-box img {
+            width: 60vw;
+            max-width: 260px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+.text-box {
+    width: 85vw;
+    max-width: 360px;
+}
+button, a {
+    min-height: 44px;
+}
+.options {
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 480px) {
+    .options {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+body {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .message-box {
+            background: white;
+            border: 2px solid hotpink;
+            border-radius: 15px;
+            padding: 18px 30px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .cake-button {
+            margin-top: 20px;
+            padding: 12px 28px;
+            background: white;
+            border: 2px solid hotpink;
+            border-radius: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+            display: inline-block;
+        }
+
+        .cake-button:hover {
+            background: #FFD1DC;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='yes_image.png') }}" alt="yes image">
+        </div>
+
+        <div class="message-box">
+            IT'S OUR ONE YEAR ANNIVERSARY!!
+        </div>
+
+        <a href="/cake" class="cake-button">
+            CLICK THIS TO CUT THE CAKE!
+        </a>
+    </div>
+</body>
+</html>

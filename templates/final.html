@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ending</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+body {
+    font-size: clamp(14px, 4vw, 18px);
+}
+
+        .container {
+            text-align: center;
+        }
+.text-box {
+    width: 85vw;
+    max-width: 360px;
+}
+button, a {
+    min-height: 44px;
+}
+.options {
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 480px) {
+    .options {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+body {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+        .image-box img {
+            width:60vw;
+            max-width: 260px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0); }
+        }
+
+        .ending-title {
+            margin-top: 25px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .ending-status {
+            margin-top: 8px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .home-button {
+            margin-top: 30px;
+            padding: 10px 30px;
+            background: white;
+            color: black;
+            border-radius: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='final_image.png') }}" alt="ending image">
+        </div>
+
+        <div class="ending-title">
+            ENDING:
+        </div>
+
+        <div class="ending-status">
+            GIRLFRIEND HAPPY
+        </div>
+
+        <a href="/" class="home-button">
+            RETURN TO HOME
+        </a>
+    </div>
+</body>
+</html>

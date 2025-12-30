@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Think Again</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #FFC1CC;
+            background-image: radial-gradient(#FFD1DC 10%, transparent 10%);
+            background-size: 20px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+body {
+    font-size: clamp(14px, 4vw, 18px);
+}
+
+        .container {
+            text-align: center;
+        }
+
+        .image-box img {
+            width:60vw;
+            max-width: 260px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+.text-box {
+    width: 85vw;
+    max-width: 360px;
+}
+button, a {
+    min-height: 44px;
+}
+.options {
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 480px) {
+    .options {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+body {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .message-box {
+            background: white;
+            border: 2px solid hotpink;
+            border-radius: 15px;
+            padding: 15px 30px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .return {
+            margin-top: 15px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .return:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-box">
+            <img src="{{ url_for('static', filename='no_image.png') }}" alt="no image">
+        </div>
+
+        <div class="message-box">
+            THINK AGAIN
+        </div>
+
+        <a href="/no-ending" class="return">
+    CONTINUE
+</a>
+
+    </div>
+</body>
+</html>
