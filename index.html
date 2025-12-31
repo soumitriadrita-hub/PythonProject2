@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anniversary</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #FFC1CC;
+    background-image: radial-gradient(#FFD1DC 6px, transparent 6px);
+    background-size: 40px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+img {
+    width: 60vw;
+    max-width: 260px;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+.box {
+    background: white;
+    border: 2px solid hotpink;
+    border-radius: 20px;
+    padding: 14px;
+    margin: 18px auto;
+    width: 85vw;
+    max-width: 360px;
+    font-weight: bold;
+}
+
+.options {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.option {
+    background: white;
+    border-radius: 20px;
+    padding: 12px 30px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .options {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<img src="static/image.png">
+
+<div class="box">DO YOU KNOW WHAT TODAY IS?</div>
+
+<div class="options">
+    <a href="yes.html" class="option">YES</a>
+    <a href="no.html" class="option">NO</a>
+</div>
+
+</div>
+</body>
+</html>
